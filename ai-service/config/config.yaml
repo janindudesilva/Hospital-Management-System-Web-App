@@ -1,0 +1,63 @@
+project:
+  name: disease_prediction_category_model_v2
+  random_state: 42
+
+data:
+  raw_data_path: data/raw/disease_dataset.csv
+  target_column: Disease
+  leakage_columns:
+    - Outcome Variable
+    - Original Disease
+  drop_exact_duplicates: true
+  test_size: 0.20
+
+preprocessing:
+  numeric_features:
+    - Age
+    - Symptom Duration (Days)
+    - Temperature (C)
+  binary_yes_no_features:
+    - Fever
+    - Cough
+    - Fatigue
+    - Difficulty Breathing
+    - Sore Throat
+    - Runny Nose
+    - Chest Pain
+    - Headache
+    - Nausea
+    - Body Pain
+  categorical_features:
+    - Gender
+    - Blood Pressure
+    - Cholesterol Level
+    - Severity
+    - Age Group
+
+training:
+  cv_folds: 3
+  scoring: f1_macro
+  n_jobs: 1
+  models_to_try:
+    - random_forest
+    - extra_trees
+    - logistic_regression
+  randomized_search_iterations:
+    random_forest: 4
+    extra_trees: 4
+    logistic_regression: 4
+
+prediction:
+  uncertainty_threshold: 0.40
+
+artifacts:
+  model_dir: models
+  best_model_path: models/best_model.joblib
+  label_encoder_path: models/label_encoder.joblib
+  feature_columns_path: models/feature_columns.joblib
+  metadata_path: models/model_metadata.json
+  metrics_path: reports/metrics.json
+  cv_results_path: reports/cv_results.csv
+  classification_report_path: reports/classification_report.txt
+  confusion_matrix_path: reports/confusion_matrix.csv
+  feature_importance_path: reports/feature_importance.csv

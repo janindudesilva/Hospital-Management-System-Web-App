@@ -1,0 +1,89 @@
+{
+  "project_name": "disease_prediction_category_model_v2",
+  "best_model_name": "random_forest_manual",
+  "best_cv_score": null,
+  "best_params": {
+    "n_estimators": "500",
+    "max_depth": "16",
+    "min_samples_split": "2",
+    "min_samples_leaf": "1",
+    "max_features": "sqrt"
+  },
+  "target_column": "Disease",
+  "cleaning_info": {
+    "rows_before_cleaning": 2750,
+    "exact_duplicate_rows_in_raw": 843,
+    "removed_rows_with_missing_required_values": 0,
+    "duplicate_feature_profiles_before_removal": 0,
+    "rows_after_cleaning": 1907,
+    "removed_leakage_columns": [
+      "Outcome Variable",
+      "Original Disease"
+    ],
+    "target_column": "Disease",
+    "target_classes": [
+      "Cancer",
+      "Cardio",
+      "Dermatology_Allergy",
+      "Endocrine",
+      "Gastro_Hepato_Renal",
+      "Infectious",
+      "Mental_Health",
+      "Musculoskeletal",
+      "Neurological",
+      "Other",
+      "Respiratory"
+    ]
+  },
+  "diagnostics": {
+    "n_rows": 1907,
+    "n_columns": 20,
+    "n_features": 19,
+    "n_target_classes": 11,
+    "duplicate_feature_profiles": 0,
+    "unique_feature_profiles": 1907,
+    "ambiguous_feature_profiles": 0,
+    "category_counts": {
+      "Cancer": 80,
+      "Cardio": 220,
+      "Dermatology_Allergy": 83,
+      "Endocrine": 150,
+      "Gastro_Hepato_Renal": 250,
+      "Infectious": 159,
+      "Mental_Health": 94,
+      "Musculoskeletal": 196,
+      "Neurological": 175,
+      "Other": 250,
+      "Respiratory": 250
+    }
+  },
+  "warnings": [],
+  "metrics": {
+    "test_accuracy": 0.5261780104712042,
+    "test_balanced_accuracy": 0.44587623735210274,
+    "test_f1_macro": 0.44076918178396984,
+    "test_f1_weighted": 0.5048598213009332,
+    "test_rows": 382,
+    "test_unique_classes": 11,
+    "test_top_3_accuracy": 0.8272251308900523
+  },
+  "classes": [
+    "Cancer",
+    "Cardio",
+    "Dermatology_Allergy",
+    "Endocrine",
+    "Gastro_Hepato_Renal",
+    "Infectious",
+    "Mental_Health",
+    "Musculoskeletal",
+    "Neurological",
+    "Other",
+    "Respiratory"
+  ],
+  "notes": [
+    "This version uses the new uploaded dataset.",
+    "Outcome Variable and Original Disease are removed to avoid leakage.",
+    "Artifacts were pre-generated so the project is ready to run immediately.",
+    "Educational prototype only."
+  ]
+}
