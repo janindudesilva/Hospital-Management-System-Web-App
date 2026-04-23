@@ -1,0 +1,48 @@
+package com.hospital.repository;
+
+import com.hospital.model.Bill;
+import com.hospital.model.enums.PaymentStatus;
+import org.springframework.data.jpa.repository.JpaRepository;
+import org.springframework.data.jpa.repository.Modifying;
+import org.springframework.data.jpa.repository.Query;
+import org.springframework.data.repository.query.Param;
+import org.springframework.stereotype.Repository;
+import org.springframework.transaction.annotation.Transactional;
+
+import java.math.BigDecimal;
+import java.time.LocalDate;
+import java.util.List;
+import java.util.Optional;
+
+@Repository
+public interface BillRepository extends JpaRepository<Bill, Long> {
+    
+    @Query("SELECT b FROM Bill b WHERE b.deleted = false")
+    List<Bill> findActiveBills();
+    
+    @Query("SELECT b FROM Bill b WHERE b.deleted = false AND b.id = :id")
+    Optional<Bill> findActiveById(@Param("id") Long id);
+    
+    @Query("SELECT b FROM Bill b WHERE b.deleted = false AND b.patient.id = :patientId")
+    List<Bill> findByPatientId(@Param("patientId") Long patientId);
+    
+    @Query("SELECT b FROM Bill b WHERE b.deleted = false AND b.appointment.id = :appointmentId")
+    Optional<Bill> findByAppointmentId(@Param("appointmentId") Long appointmentId);
+    
+    @Query("SELECT b FROM Bill b WHERE b.deleted = false AND b.paymentStatus = :paymentStatus")
+    List<Bill> findByPaymentStatus(@Param("paymentStatus") PaymentStatus paymentStatus);
+    
+    @Query("SELECT b FROM Bill b WHERE b.deleted = false AND b.paymentDate BETWEEN :startDate AND :endDate")
+    List<Bill> findByPaymentDateRange(@Param("startDate") LocalDate startDate, 
+                                      @Param("endDate") LocalDate endDate);
+    
+    @Query("SELECT SUM(b.finalAmount) FROM Bill b WHERE b.deleted = false AND b.paymentStatus = 'PAID' AND b.paymentDate BETWEEN :startDate AND :endDate")
+    BigDecimal getTotalRevenueBetweenDates(@Param("startDate") LocalDate startDate, 
+                                         @Param("endDate") LocalDate endDate);
+    
+    @Modifying
+    @Transactional
+    @Query(value = "DELETE FROM bills WHERE id = :id", nativeQuery = true)
+    void forceHardDelete(@Param("id") Long id);
+    
+}
