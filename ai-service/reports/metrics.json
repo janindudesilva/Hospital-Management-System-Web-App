@@ -1,0 +1,9 @@
+{
+  "test_accuracy": 0.5261780104712042,
+  "test_balanced_accuracy": 0.44587623735210274,
+  "test_f1_macro": 0.44076918178396984,
+  "test_f1_weighted": 0.5048598213009332,
+  "test_rows": 382,
+  "test_unique_classes": 11,
+  "test_top_3_accuracy": 0.8272251308900523
+}

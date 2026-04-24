@@ -1,0 +1,29 @@
+feature,importance
+num__Symptom Duration (Days),0.17993907692582675
+num__Age,0.12134138984654201
+num__Temperature (C),0.09988649071432698
+bin__Headache,0.03689040407558941
+bin__Body Pain,0.036244404363540726
+bin__Chest Pain,0.034723758296167674
+bin__Runny Nose,0.03382478091772363
+bin__Sore Throat,0.033175193176699036
+bin__Nausea,0.032002433637304165
+bin__Cough,0.03065692468674229
+bin__Difficulty Breathing,0.028310872559972455
+bin__Fatigue,0.02771908361790827
+cat__Cholesterol Level_High,0.02525600587400416
+cat__Blood Pressure_High,0.024958519875788288
+cat__Blood Pressure_Normal,0.024074661168005346
+cat__Gender_Male,0.023854357221942627
+cat__Gender_Female,0.02322626418214473
+cat__Cholesterol Level_Normal,0.023187304971690293
+cat__Severity_Moderate,0.022020977989271995
+cat__Severity_Mild,0.02157833517970332
+bin__Fever,0.020949036006654705
+cat__Severity_Severe,0.01848734869230851
+cat__Cholesterol Level_Low,0.018008478872329838
+cat__Age Group_Adult,0.017019817302230084
+cat__Age Group_Young Adult,0.015429519740752842
+cat__Blood Pressure_Low,0.013810159590119823
+cat__Age Group_Senior,0.01332581046944101
+cat__Age Group_Teen,9.85900452689743e-05
